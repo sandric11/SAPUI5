@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.5"
+metadata:
+  name: sapphir.createreservation
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: https://sr-fi-ap-01.uni-lj.si:44332
+          client: "200"
+        app:
+          name: ZCR_RESERVATION
+          description: VS code deploy kreiranje rezervacije
+          package: ZMM_UI5
+          transport: UFRK900323

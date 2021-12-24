@@ -1,0 +1,139 @@
+{
+  "_version": "1.32.0",
+  "sap.app": {
+    "id": "sapphir.createreservation",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+    "dataSources": {
+      "ZMMGW_UL_IP_MOBILE_SRV": {
+        "uri": "/sap/opu/odata/sap/ZMMGW_UL_IP_MOBILE_SRV/",
+        "type": "OData",
+        "settings": {
+          "localUri": "localService/metadata.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.97.0",
+      "libs": {
+        "sap.ui.layout": {},
+        "sap.ui.core": {},
+        "sap.m": {}
+      }
+    },
+    "contentDensities": {
+      "compact": false,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sapphir.createreservation.i18n.i18n"
+        }
+      },
+      "oModelReservation": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "defaultOperationMode": "Server",
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Request"
+        },
+        "dataSource": "ZMMGW_UL_IP_MOBILE_SRV",
+        "preload": true
+      },
+      "jModelWerksLgort": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "/sap/opu/odata/sap/ZMMGW_UL_IP_MOBILE_SRV/WerksToLgortSet"
+      },
+      "jModelMaterialData": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "/sap/opu/odata/sap/ZMMGW_UL_IP_MOBILE_SRV/ReservationMaterialDataSet"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "sapphir.createreservation.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RoutePage1",
+          "pattern": "RoutePage1",
+          "target": [
+            "TargetPage1"
+          ]
+        },
+        {
+          "name": "RoutePage2",
+          "pattern": "RoutePage2",
+          "target": [
+            "TargetPage2"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetPage1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Page1",
+          "viewName": "Page1"
+        },
+        "TargetPage2": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Page2",
+          "viewName": "Page2"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "sapphir.createreservation.view.Page1",
+      "type": "XML",
+      "async": true
+
+    }
+  }
+}

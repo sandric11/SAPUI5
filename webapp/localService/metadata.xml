@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZMMGW_UL_IP_MOBILE_SRV" xml:lang="sl" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="WerksToLgort" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werks"/>
+                    <PropertyRef Name="LgortFrom"/>
+                </Key>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Obrat" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LgortFrom" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Skladišč. lok." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lgortactive" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Boolova variabla (X=pravilno, -=nepravilno, space=neznano)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SuccessError" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Enomestna oznaka" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Številka dokumenta materiala" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Msg" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Sporočilo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ReservationItems" Relationship="ZMMGW_UL_IP_MOBILE_SRV.reservation_head_items_association" FromRole="FromRole_reservation_head_items_association" ToRole="ToRole_reservation_head_items_association"/>
+            </EntityType>
+            <EntityType Name="ReservationItems" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werks"/>
+                    <PropertyRef Name="LgortFrom"/>
+                </Key>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Obrat" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LgortFrom" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Skladišč. lok." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LgortTo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Skladišč. lok." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bwart" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Vrsta premika" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Maktg" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Oznaka" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Šarža" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Količina" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Unit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="OsMerEno" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <NavigationProperty Name="WerksToLgort" Relationship="ZMMGW_UL_IP_MOBILE_SRV.reservation_head_items_association" FromRole="ToRole_reservation_head_items_association" ToRole="FromRole_reservation_head_items_association"/>
+            </EntityType>
+            <EntityType Name="ReservationMaterialData" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werks"/>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Obrat" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Maktg" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Oznaka" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Količina" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Unit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="OsMerEno" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+            </EntityType>
+            <Association Name="reservation_head_items_association" sap:content-version="1">
+                <End Type="ZMMGW_UL_IP_MOBILE_SRV.WerksToLgort" Multiplicity="1" Role="FromRole_reservation_head_items_association"/>
+                <End Type="ZMMGW_UL_IP_MOBILE_SRV.ReservationItems" Multiplicity="*" Role="ToRole_reservation_head_items_association"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_reservation_head_items_association">
+                        <PropertyRef Name="LgortFrom"/>
+                        <PropertyRef Name="Werks"/>
+                    </Principal>
+                    <Dependent Role="ToRole_reservation_head_items_association">
+                        <PropertyRef Name="LgortFrom"/>
+                        <PropertyRef Name="Werks"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZMMGW_UL_IP_MOBILE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="WerksToLgortSet" EntityType="ZMMGW_UL_IP_MOBILE_SRV.WerksToLgort" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ReservationItemsSet" EntityType="ZMMGW_UL_IP_MOBILE_SRV.ReservationItems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ReservationMaterialDataSet" EntityType="ZMMGW_UL_IP_MOBILE_SRV.ReservationMaterialData" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="reservation_head_items_associationSet" Association="ZMMGW_UL_IP_MOBILE_SRV.reservation_head_items_association" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WerksToLgortSet" Role="FromRole_reservation_head_items_association"/>
+                    <End EntitySet="ReservationItemsSet" Role="ToRole_reservation_head_items_association"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="https://sr-fi-ap-01.uni-lj.si:44332/sap/opu/odata/sap/ZMMGW_UL_IP_MOBILE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://sr-fi-ap-01.uni-lj.si:44332/sap/opu/odata/sap/ZMMGW_UL_IP_MOBILE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
