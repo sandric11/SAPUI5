@@ -1,0 +1,83 @@
+<mvc:View
+	controllerName="sapphir.basicgetstock.controller.Page2"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+	<Shell
+		appWidthLimited="true"
+		backgroundColor=""
+		backgroundImage=""
+		backgroundOpacity="1"
+		backgroundRepeat="false"
+		headerRightText=""
+		homeIcon=""
+		logo=""
+		showLogout="true"
+		title=""
+		titleLevel="H1"
+	>
+		<app>
+			<Page
+				id="page2"
+				navButtonTooltip="Nazaj"
+				showNavButton="true"
+				title="{i18n>Page2View.PregledZaloge}"
+				navButtonPress="onBack"
+			>
+				<HBox height="1rem"/>
+				<content>
+					<l:Grid position="Center" vSpacing="1" hSpacing="1" >
+						<l:HorizontalLayout allowWrapping="false" >
+							<l:content>
+								<HBox>
+									<GenericTile
+										ariaLabel=""
+										backgroundImage=""
+										failedText=""
+										frameType="OneByHalf"
+										header="Naziv materiala"
+										headerImage=""
+										imageDescription=""
+										mode="ContentMode"
+										scope="Display"
+										sizeBehavior="Responsive"
+										state="Loaded"
+										subheader="{jStockModel>/Maktx}"
+										wrappingType="Normal"
+									>
+										<tileContent>
+										</tileContent>
+									</GenericTile>
+								</HBox>
+								<HBox>
+									<GenericTile
+										ariaLabel=""
+										backgroundImage=""
+										failedText=""
+										frameType="OneByHalf"
+										header="Količina"
+										headerImage=""
+										imageDescription=""
+										mode="ContentMode"
+										scope="Display"
+										sizeBehavior="Responsive"
+										state="Loaded"
+										subheader="{
+											parts: ['jStockModel>/Labst', 'jStockModel>/Meins'],
+											formatter: '.labstMeinsFormatter'
+										}"
+										wrappingType="Normal"
+									/>
+								</HBox>
+							</l:content>
+						</l:HorizontalLayout>
+					</l:Grid>
+				</content>
+			</Page>
+		</app>
+	</Shell>
+</mvc:View>

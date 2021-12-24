@@ -1,0 +1,130 @@
+{
+  "_version": "1.32.0",
+  "sap.app": {
+    "id": "sapphir.basicgetstock",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "ZMMGW_GET_STOCK_SRV": {
+        "uri": "/sap/opu/odata/sap/ZMMGW_GET_STOCK_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.96.0",
+      "libs": {
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sapphir.basicgetstock.i18n.i18n"
+        }
+      },
+      "oStockModel": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "defaultOperationMode": "Server",
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Request"
+        },
+        "dataSource": "ZMMGW_GET_STOCK_SRV",
+        "preload": true
+      },
+      "jStockModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "/sap/opu/odata/sap/ZMMGW_GET_STOCK_SRV/GetStockSet"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "sapphir.basicgetstock.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RoutePage1",
+          "pattern": "RoutePage1",
+          "target": [
+            "TargetPage1"
+          ]
+        },
+        {
+          "name": "RoutePage2",
+          "pattern": "RoutePage2",
+          "target": [
+            "TargetPage2"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetPage1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Page1",
+          "viewName": "Page1"
+        },
+        "TargetPage2": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Page2",
+          "viewName": "Page2"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "sapphir.basicgetstock.view.Page1",
+      "type": "XML",
+      "async": true
+    }
+  }
+}

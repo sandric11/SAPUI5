@@ -1,0 +1,187 @@
+<mvc:View
+	controllerName="sapphir.basicgetstock.controller.Page1"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page
+					id="page"
+					title="{i18n>title}"
+				>
+					<content>
+                    <Panel
+                        expandable="true"
+                        headerText="{i18n>Page1View.Nastavitve}"
+                    >
+                        <content>
+                        <form:Form
+							width="100%"
+							editable="true"
+						>
+							<form:formContainers>
+								<form:FormContainer>
+									<form:formElements>
+										<form:FormElement>
+											<form:label>
+												<Label
+													text="{i18n>Page1View.Obrat}"
+													width="100%"
+													required="true"
+												/>
+											</form:label>
+											<form:fields>
+                                            <Select
+												id="selectObrat"
+                                                autoAdjustWidth="false"
+                                                enabled="true"
+                                                forceSelection="true"
+                                                icon="empty string"
+                                                maxWidth="100%"
+                                                name="empty string"
+                                                selectedItemId="empty string"
+                                                selectedKey="empty string"
+                                                showSecondaryValues="true"
+                                                textAlign="Initial"
+                                                textDirection="Inherit"
+                                                type="Default"
+                                                valueState="None"
+                                                valueStateText="empty string"
+                                                width="auto"
+												
+                                                
+                                            >
+                                            <core:Item key="2902" text="Obrat1" />
+                                            </Select>
+  
+											</form:fields>
+										</form:FormElement>
+										<form:FormElement>
+											<form:label>
+												<Label
+													text="{i18n>Page1View.SklLokacija}"
+													width="100%"
+													required="true"
+												/>
+											</form:label>
+											<form:fields>
+                                            <Select
+												id="selectLgort"
+                                                autoAdjustWidth="false"
+                                                enabled="true"
+                                                forceSelection="true"
+                                                icon="empty string"
+                                                maxWidth="100%"
+                                                name="empty string"
+                                                selectedItemId="empty string"
+                                                selectedKey="empty string"
+                                                showSecondaryValues="true"
+                                                textAlign="Initial"
+                                                textDirection="Inherit"
+                                                type="Default"
+                                                valueState="None"
+                                                valueStateText="empty string"
+                                                width="auto"
+                                                
+                                            >
+                                            <core:Item key="1006" text="Skladišče1" />
+											<core:Item key="" text="" />
+                                            </Select>
+  
+											</form:fields>
+										</form:FormElement>
+									</form:formElements>
+									<form:title/>
+								</form:FormContainer>
+							</form:formContainers>
+							<form:layout>
+								<form:ResponsiveGridLayout
+									adjustLabelSpan="false"
+									labelSpanL="3"
+								/>
+							</form:layout>
+						</form:Form>
+                        </content>
+                        <headerToolbar>
+                        </headerToolbar>
+                        <infoToolbar>
+                        </infoToolbar>
+                    </Panel>
+						<form:Form
+							width="100%"
+							editable="true"
+						>
+							<form:formContainers>
+								<form:FormContainer>
+									<form:formElements>
+										<form:FormElement>
+											<form:label>
+												<Label
+													text="{i18n>Page1View.Material}"
+													width="100%"
+													required="true"
+												/>
+											</form:label>
+											<form:fields>
+												<Input
+													id="inputMaterial"
+													placeholder="Poskeniraj QR"
+													width="auto"
+													required="true"
+													valueStateText="Napaka v formatu"
+													maxLength="9"
+													liveChange="isInput"
+												/>
+												<Button
+													text="{i18n>Page1View.Skeniraj}"
+													icon="sap-icon://bar-code"
+													width="auto"
+													iconDensityAware="false"
+													id="btnScan"
+													press="onScan"
+												/>
+											</form:fields>
+										</form:FormElement>
+									</form:formElements>
+									<form:title/>
+								</form:FormContainer>
+							</form:formContainers>
+							<form:layout>
+								<form:ResponsiveGridLayout
+									adjustLabelSpan="false"
+									labelSpanL="3"
+								/>
+							</form:layout>
+						</form:Form>
+					</content>
+					<footer>
+						<OverflowToolbar
+							width="100%"
+							height="46px"
+						>
+							<content>
+								<ToolbarSpacer width=""/>
+								<Button
+									text="{i18n>Page1View.Potrdi}"
+									type="Emphasized"
+									icon="sap-icon://arrow-right"
+									width="auto"
+									iconDensityAware="false"
+                                    press="getStock"
+									id="btnPotrdi"
+								/>
+							</content>
+						</OverflowToolbar>
+					</footer>
+					<headerContent/>
+					<subHeader/>
+					<customHeader/>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
